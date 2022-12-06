@@ -1,77 +1,80 @@
+
 import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import Carousel from './components/carousel/Carousel';
+import Card from './components/card/Card';
+import Main from './components/Main/Main';
+import Counter from './components/counter/Counter';
+import { useState } from 'react';
 
 function App() {
 
-/*   let edad = 18; */
+const [show, setShow] = useState(true)
 
-/*   if (edad >= 18){
-    console.log('Eres mayor de edad')
-  }else{
-    console.log('eres menor de edad')
-  }  */
+const toggle = () => setShow(!show)
 
-  //edad > 18 ? console.log ('Eres mayor') : edad === 18 ? console.log('Justo tenes 18') : console.log ('Eres menor')
-/* let edadPersona = null;
 
-let edadFinal = edadPersona !== null ? edadPersona : 17
-let edadFinal = edadPersona || 17
 
-console.log(edadFinal);
-
-let text = "";
-let nombre = "";
-
-let finalText = `Esto es lo que se va a imprimir ${text} de lo cual se va a imprimir ${nombre}`
-
-console.log() */
-
-//let manzanas = 10;
-//let manzanasAgregadas = 5;
-//let finalText = "Jorge tenia " + manzanas + " pero Luis le agrego " + manzanasAgregadas + " y ahora tiene un total de "+ manzanas + manzanasAgregadas
-
-//let finalText = `Jorge tenia  ${manzanas} y luis le agrego ${manzanasAgregadas} manzanas y ahora tiene un total de ${(manzanas + manzanasAgregadas)} `
-
-//console.log(finalText)
-
-/* let jugadorDeFutbol = {
-  nombre: "Lionel",
-  apellido: "Messi",
-  soltero: false,
-  hijos : ["Thiago", "Mateo" , "Ciro"]
+/* let styles = {
+  color: 'white',
+  backgroundColor: 'blue'
 }
-
-const {nombre, apellido, hijos:[Thiago, Mateo, Ciro], soltero} = jugadorDeFutbol
-
-console.log(Thiago);
- */
-
-const arr = [1,2,3,4];
-
-console.log(arr.includes(4))
-
-
-
-
-
-
   
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+const cards =[
+
+{
+  titulo : 'Componente de Rosa',
+  descripcion :'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.',
+  img :'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg',
+  btnText : 'Ver mas'
+},
+{
+  titulo : 'Componente de Jazmin',
+  descripcion :'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.',
+  img :'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg',
+  btnText : 'Eliminar'
+}
+]
+ */
+  return (  
+    
+    <div>
+      <Main>
+    { show ?  <Counter /> : null}
+{/*     <Counter />
+    <Counter /> */}
+
+
+    <button onClick={toggle}>Click</button>
+
+{/*       {cards.map(({titulo, descripcion, img, btnText, btnClassName},index) =>
+
+        <Card
+        key={index}
+        titulo={titulo}
+        descripcion={descripcion}
+        img={img}
+        btnText={btnText}
+        btnClassName={btnClassName}
+        Navbar = {Navbar}
+        />) } */}
+      </Main>
+
+
+{/* // {       <Card
+      titulo = {'Componente de Rosa'}
+      descripcion = {'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.'}
+      img = {'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg'}
+      btnText = {'Ver mas'}
+      />
+            <Card
+      titulo = {'Componente de Rosa'}
+      descripcion = {'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.'}
+      img = {'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg'}
+      btnText = {'Ver mas'}
+      /> */} 
     </div>
   );
 }
