@@ -5,7 +5,7 @@ const Card = (props) => {
 //Puedo usar estos props en Javascript:
 // Booleano // Number // String //Object // Array // Si se puede
 // -> Funciones ? Tambien
-console.log( "props", props )
+/* console.log( "props", props ) */
 
     const {titulo, descripcion, img, btnText, btnClassName, Navbar} = props //Es un objeto
   return (

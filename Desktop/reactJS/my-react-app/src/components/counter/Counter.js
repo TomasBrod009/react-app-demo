@@ -21,7 +21,7 @@ const Counter = (props) => {
     // Change ||  Cambios
     // Dismount || Desmontar
 
-    useEffect(() => {
+/*     useEffect(() => {
     //Montar || Cuando termina de cargar
     
     console.log('El componente esta listo')
@@ -41,7 +41,7 @@ const Counter = (props) => {
     }, [
         //Si hay algun cambio
         contador
-    ])
+    ]) */
     
 
 

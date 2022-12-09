@@ -1,12 +1,14 @@
 
-import logo from './logo.svg';
+/* import logo from './logo.svg'; */
 import './App.css';
 import Navbar from './components/Navbar';
-import Carousel from './components/carousel/Carousel';
+/* import Carousel from './components/carousel/Carousel'; */
 import Card from './components/card/Card';
 import Main from './components/Main/Main';
-import Counter from './components/counter/Counter';
-import { useState } from 'react';
+/* import Counter from './components/counter/Counter'; */
+import { useState, useEffect } from 'react';
+import config from '../src/config.json'
+import Spinner from './components/Spinner/Spinner';
 
 function App() {
 
@@ -14,69 +16,100 @@ const [show, setShow] = useState(true)
 
 const toggle = () => setShow(!show)
 
+const [cards, setCards] = useState([])
+const [loading,setLoading] = useState(false)
 
 
 /* let styles = {
   color: 'white',
   backgroundColor: 'blue'
 }
+   */
+
+
+
+// Estado de promesas
+
+//PENDING || PENDIENTE
+
+// FULLFILLED || COMPLETADA/EXITOSA
+
+// REJECTED || RECHAZADA
+
+const getCards = () =>{
+  setLoading(true)
+  const operacion = new Promise ((resolve, reject)=>{
+
+    setTimeout( ()=>{
+      resolve({
+        status:200,
+        data:config.cards
+      })
+      reject("Algo salio mal")
+    },2000)
+    })
+    
   
+  operacion.then((resultado) =>{
 
-const cards =[
-
-{
-  titulo : 'Componente de Rosa',
-  descripcion :'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.',
-  img :'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg',
-  btnText : 'Ver mas'
-},
-{
-  titulo : 'Componente de Jazmin',
-  descripcion :'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.',
-  img :'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg',
-  btnText : 'Eliminar'
+    //Resultado un objeto, status y data
+    setCards(resultado.data)
+    console.log(resultado)
+  }).catch( (err) =>{
+    console.log(err,'ERROR EN EL CATCH')
+    alert('Algo fallo')
+  }).finally(() =>{
+    setLoading(false)
+  })
 }
-]
- */
+
+useEffect(() => {
+  getCards()
+
+  return () => {
+    setCards([])
+  } 
+}, [])
+
+
+
+
   return (  
     
     <div>
-      <Main>
+      <Main/>
+      {loading && <Spinner/>}
+      <div className="d-flex">
+        {!loading && cards.length > 0 && cards.map(
+            ({titulo, descripcion, img, btnText, btnClassName},index) =>(
+          <Card
+          key={index}
+          titulo={titulo}
+          descripcion={descripcion}
+          img={img}
+          btnText={btnText}
+          btnClassName={btnClassName}
+          Navbar = {Navbar}
+          />
+        )
+        )} : {!loading && cards.length > 0 &&( <h1>UPS FALLO LA CARGA</h1>)} 
+        </div>
+{/*       <Main>
     { show ?  <Counter /> : null}
-{/*     <Counter />
-    <Counter /> */}
+    <Counter />
+    <Counter />
 
 
     <button onClick={toggle}>Click</button>
-
-{/*       {cards.map(({titulo, descripcion, img, btnText, btnClassName},index) =>
-
-        <Card
-        key={index}
-        titulo={titulo}
-        descripcion={descripcion}
-        img={img}
-        btnText={btnText}
-        btnClassName={btnClassName}
-        Navbar = {Navbar}
-        />) } */}
-      </Main>
+        
+      {
+        ) }
+      </Main> */}
 
 
-{/* // {       <Card
-      titulo = {'Componente de Rosa'}
-      descripcion = {'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.'}
-      img = {'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg'}
-      btnText = {'Ver mas'}
-      />
-            <Card
-      titulo = {'Componente de Rosa'}
-      descripcion = {'Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.'}
-      img = {'https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg'}
-      btnText = {'Ver mas'}
-      /> */} 
+
     </div>
   );
-}
+    }
 
 export default App;

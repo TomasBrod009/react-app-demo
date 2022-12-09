@@ -1,0 +1,18 @@
+{
+"cards" :[
+    {
+        "id":1,
+    "titulo" : "Componente de Rosa",
+    "descripcion" :"Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.",
+    "img" :"https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg",
+    "btnText" : "Ver mas"
+    },
+    {
+        "id":2,
+    "titulo" : "Componente de Jazmin",
+    "descripcion" :"Lorem ipsum dolor sit amet consectetur adipisicing elit. Verfuga tec, reiciendis, minus, laudantium tempora distinctio quas deleniti quasi voluptate.",
+    "img" :"https://estag.fimagenes.com/img/v2/7e4/1100858_526035_1024.jpg",
+    "btnText" : "Eliminar"
+    }
+    ]
+}

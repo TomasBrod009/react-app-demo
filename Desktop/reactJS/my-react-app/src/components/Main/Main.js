@@ -1,6 +1,6 @@
 import React from 'react'
-import Card from '../card/Card'
-import Carousel from '../carousel/Carousel'
+/* import Card from '../card/Card'
+import Carousel from '../carousel/Carousel' */
 import Navbar from '../Navbar'
 
 const Main = (props) => {
